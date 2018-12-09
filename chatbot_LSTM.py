@@ -1,6 +1,8 @@
 import os
 import json
 import pandas as pd
+
+
 dataset_location = os.path.join('dataset','convAI2','export_2018-07-04_train.json')
 
 def data_from_json(file,list_of_keys):
@@ -16,7 +18,6 @@ def data_from_json(file,list_of_keys):
     with open(file) as fileobj:    
         json.loads(fileobj.read(), object_hook=decode_each_dict)  # Return value ignored.
     return results
-
 
 data = data_from_json(dataset_location,['text'])
 
