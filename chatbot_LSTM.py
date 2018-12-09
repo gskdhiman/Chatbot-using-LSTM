@@ -75,8 +75,15 @@ ques = np.array(ques.tolist())
 ans = np.array(ans.tolist())
 
 inp = Input(shape=(padding_len,emb_dim))
-out = LSTM(300,return_sequences = True,activation='sigmoid',go_backwards = True,kernel_initializer = 'glorot_normal', recurrent_initializer='glorot_normal' )(inp)
-out = LSTM(600,return_sequences = True,activation='sigmoid',go_backwards = True,kernel_initializer = 'glorot_normal', recurrent_initializer='glorot_normal')(out)
+out = LSTM(300,return_sequences = True,activation='sigmoid',
+           go_backwards = True,
+           kernel_initializer = 'glorot_normal', 
+           recurrent_initializer='glorot_normal' )(inp)
+out = LSTM(600,return_sequences = True,
+           activation='sigmoid',
+           go_backwards = True,
+           kernel_initializer = 'glorot_normal', 
+           recurrent_initializer='glorot_normal')(out)
 out = LSTM(300,return_sequences = True,activation='sigmoid',kernel_initializer = 'glorot_normal', recurrent_initializer='glorot_normal')(out)
 model = Model(inputs=inp, outputs=out)
 
