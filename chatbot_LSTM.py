@@ -9,7 +9,7 @@ from keras.layers.recurrent import LSTM
 from keras.models import load_model
 from keras.preprocessing.sequence import pad_sequences
 
-word_emb_model_path = os.path.join('..','Google_News_vectors','GoogleNews-vectors-negative300.bin')
+word_emb_model_path = os.path.join('..','Word_embeddings','GoogleNews-vectors-negative300.bin')
 
 dataset_location = os.path.join('dataset','convAI2','export_2018-07-04_train.json')
 dataset_location2 = os.path.join('dataset','convAI2','export_2018-07-05_train.json')
@@ -88,7 +88,7 @@ out = LSTM(300,return_sequences = True,activation='sigmoid',kernel_initializer =
 model = Model(inputs=inp, outputs=out)
 
 model.compile(optimizer = 'adam', loss= 'cosine_proximity', metrics=['accuracy'])
-model.fit(ques,ans,epochs=200, verbose=1,validation_split=0.1,batch_size=4)
+model.fit(ques,ans,epochs=200, verbose=1,validation_split=0.1,batch_size=150)
 model.save('chatbot.h5')
 #predictions = model.predict(test_ans)
 
